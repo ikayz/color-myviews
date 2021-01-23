@@ -1,19 +1,15 @@
 package com.ikayz.colormyviews
 
+
 import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    val box_one_text = findViewById<View>(R.id.box_one_text)
-    val box_two_text = findViewById<View>(R.id.box_two_text)
-    val box_three_text = findViewById<View>(R.id.box_three_text)
-    val box_four_text = findViewById<View>(R.id.box_four_text)
-    val box_five_text = findViewById<View>(R.id.box_five_text)
-    val constraint_layout = findViewById<View>(R.id.constraint_layout)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,9 +17,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        val boxOneText = findViewById<TextView>(R.id.box_one_text)
+        val boxTwoText = findViewById<TextView>(R.id.box_two_text)
+        val boxThreeText = findViewById<TextView>(R.id.box_three_text)
+        val boxFourText = findViewById<TextView>(R.id.box_four_text)
+        val boxFiveText = findViewById<TextView>(R.id.box_five_text)
+        val constraintLayout = findViewById<View>(R.id.constraint_layout)
+        val redButton = findViewById<Button>(R.id.red_button)
+        val yellowButton = findViewById<Button>(R.id.yellow_button)
+        val greenButton = findViewById<Button>(R.id.green_button)
+
         val clickableViews: List<View> =
-                listOf(box_one_text, box_two_text, box_three_text, box_four_text,
-                        box_five_text, constraint_layout)
+                listOf(boxOneText, boxTwoText, boxThreeText, boxFourText,
+                        boxFiveText, constraintLayout, redButton, yellowButton, greenButton)
 
         for (item in clickableViews) {
             item.setOnClickListener { makeColored(it) }
@@ -32,6 +38,10 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     private fun makeColored(view: View) {
+        val boxThreeText = findViewById<TextView>(R.id.box_three_text)
+        val boxFourText = findViewById<TextView>(R.id.box_four_text)
+        val boxFiveText = findViewById<TextView>(R.id.box_five_text)
+
         when (view.id) {
             // Set the background colour of the boxes on tap
             R.id.box_one_text -> view.setBackgroundColor(Color.MAGENTA)
@@ -43,9 +53,9 @@ class MainActivity : AppCompatActivity() {
             R.id.box_five_text -> view.setBackgroundResource(android.R.color.holo_orange_light)
 
             // Buttons which are changing the colour of the boxes
-            R.id.red_button -> box_three_text.setBackgroundColor(R.color.red)
-            R.id.yellow_button -> box_four_text.setBackgroundColor(R.color.yellow)
-            R.id.green_button -> box_five_text.setBackgroundColor(R.color.green)
+            R.id.red_button -> boxThreeText.setBackgroundColor(R.color.red)
+            R.id.yellow_button -> boxFourText.setBackgroundColor(R.color.yellow)
+            R.id.green_button -> boxFiveText.setBackgroundColor(R.color.green)
 
             else -> view.setBackgroundColor(Color.CYAN)
         }
